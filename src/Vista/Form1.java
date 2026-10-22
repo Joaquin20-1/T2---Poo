@@ -1,5 +1,9 @@
 package Vista;
 
+import Modelo.TecnicoHardware;
+import Modelo.Trabajador;
+import javax.swing.JOptionPane;
+
 public class Form1 extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Form1.class.getName());
@@ -20,7 +24,7 @@ public class Form1 extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         btnRegistrarHw = new javax.swing.JButton();
-        jSpinner1 = new javax.swing.JSpinner();
+        spnHw = new javax.swing.JSpinner();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSw = new javax.swing.JTable();
@@ -95,10 +99,11 @@ public class Form1 extends javax.swing.JFrame {
         btnRegistrarHw.setBackground(new java.awt.Color(51, 102, 255));
         btnRegistrarHw.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnRegistrarHw.setText("Registrar T. Hardware");
+        btnRegistrarHw.addActionListener(this::btnRegistrarHwActionPerformed);
         jPanel3.add(btnRegistrarHw, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 20, 200, 30));
 
-        jSpinner1.setBorder(null);
-        jPanel3.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 70, 30));
+        spnHw.setBorder(null);
+        jPanel3.add(spnHw, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 70, 30));
 
         jTabbedPane1.addTab("Registro Hardware", jPanel3);
 
@@ -273,6 +278,36 @@ public class Form1 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnRegistrarHwActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarHwActionPerformed
+        Double sueldo  ;
+        int cant,dni;
+        try 
+        {
+            sueldo = Double.parseDouble(txtSueldo.getText());
+            cant = Integer.parseInt(spnHw.getValue().toString());
+            dni = Integer.parseInt(txtDni.getText());
+        }catch(Exception x)
+        {
+            JOptionPane.showMessageDialog(null,"INGRESE SOLO NUMEROS EN LOS CAMPOS REQUERIDOS",
+                    "ERORR",JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if (!txtCodigo.getText().isBlank()&&!txtNombre.getText().isBlank()
+            && !txtDni.getText().isBlank()&&!txtSueldo.getText().isBlank())
+            {
+                String cod = txtCodigo.getText();
+                String nom = txtCodigo.getText();
+                Trabajador TecnicoHw = new TecnicoHardware(cod,nom,dni,sueldo
+                ,cant);
+                
+            }
+        else 
+        {
+            JOptionPane.showMessageDialog(null,"LLENE TODOS LOS CAMPOS","ERROR DE DATOS"
+            ,JOptionPane.WARNING_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_btnRegistrarHwActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLimpiar;
@@ -297,9 +332,9 @@ public class Form1 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JSpinner spnHw;
     private javax.swing.JTable tblHw;
     private javax.swing.JTable tblSw;
     private javax.swing.JTextField txtCodigo;
