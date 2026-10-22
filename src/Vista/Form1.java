@@ -1,11 +1,49 @@
 package Vista;
 
+import Modelo.TecnicoHardware;
+import Modelo.Trabajador;
+import java.util.ArrayList;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.table.DefaultTableModel;
+
 public class Form1 extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Form1.class.getName());
+    
+    ArrayList<Trabajador> listaTrabajadores =new ArrayList<>();
+    
+    DefaultTableModel modeloTabla;
 
     public Form1() {
         initComponents();
+        
+//        Asignar encabezados a las tablas
+        String tituloHw [] = {"Código", "Nombre", "DNI", "Sueldo Base", "Cantidad de Servicios", "Bonificación", "Sueldo Total" };
+        modeloTabla = new DefaultTableModel(null, tituloHw);
+        tblHw.setModel(modeloTabla);
+        tblSw.setModel(modeloTabla);
+        
+//        configuracion del spinner
+        SpinnerNumberModel modeloSpn = new SpinnerNumberModel(1,1,90,1);
+        spnHw.setModel(modeloSpn);
+        spnSw.setModel(modeloSpn);
+        
+        }
+        
+        
+        void LimpiarCampos() {
+            txtCodigo.setText("");
+            txtNombre.setText("");
+            txtDni.setText("");
+            txtSueldo.setText("");
+            txtCodigo.requestFocus();
+        
+        
+        
+        
+        
+        
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -20,14 +58,14 @@ public class Form1 extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         btnRegistrarHw = new javax.swing.JButton();
-        jSpinner1 = new javax.swing.JSpinner();
+        spnHw = new javax.swing.JSpinner();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSw = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         btnRegistrarSw = new javax.swing.JButton();
-        jSpinner2 = new javax.swing.JSpinner();
+        spnSw = new javax.swing.JSpinner();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -97,8 +135,8 @@ public class Form1 extends javax.swing.JFrame {
         btnRegistrarHw.setText("Registrar T. Hardware");
         jPanel3.add(btnRegistrarHw, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 20, 200, 30));
 
-        jSpinner1.setBorder(null);
-        jPanel3.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 70, 30));
+        spnHw.setBorder(null);
+        jPanel3.add(spnHw, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 70, 30));
 
         jTabbedPane1.addTab("Registro Hardware", jPanel3);
 
@@ -142,12 +180,13 @@ public class Form1 extends javax.swing.JFrame {
 
         btnRegistrarSw.setBackground(new java.awt.Color(51, 102, 255));
         btnRegistrarSw.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnRegistrarSw.setText("Registrar T. Hardware");
+        btnRegistrarSw.setText("Registrar T. Software");
+        btnRegistrarSw.setToolTipText("");
         btnRegistrarSw.setActionCommand("Registrar T. Software");
         jPanel2.add(btnRegistrarSw, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 20, 200, 30));
 
-        jSpinner2.setBorder(null);
-        jPanel2.add(jSpinner2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 70, 30));
+        spnSw.setBorder(null);
+        jPanel2.add(spnSw, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 70, 30));
 
         jTabbedPane1.addTab("Registro Software", jPanel2);
 
@@ -297,9 +336,9 @@ public class Form1 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JSpinner spnHw;
+    private javax.swing.JSpinner spnSw;
     private javax.swing.JTable tblHw;
     private javax.swing.JTable tblSw;
     private javax.swing.JTextField txtCodigo;
