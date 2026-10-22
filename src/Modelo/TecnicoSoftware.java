@@ -1,5 +1,7 @@
 package Modelo;
 
-public class TecnicoSoftware {
+public class TecnicoSoftware extends Trabajador{
+
+
     
 }
