@@ -2,6 +2,7 @@ package Vista;
 
 import Modelo.TecnicoHardware;
 import Modelo.Trabajador;
+import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
@@ -133,6 +134,7 @@ public class Form1 extends javax.swing.JFrame {
         btnRegistrarHw.setBackground(new java.awt.Color(51, 102, 255));
         btnRegistrarHw.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnRegistrarHw.setText("Registrar T. Hardware");
+        btnRegistrarHw.addActionListener(this::btnRegistrarHwActionPerformed);
         jPanel3.add(btnRegistrarHw, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 20, 200, 30));
 
         spnHw.setBorder(null);
@@ -312,6 +314,36 @@ public class Form1 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnRegistrarHwActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarHwActionPerformed
+        Double sueldo  ;
+        int cant,dni;
+        try 
+        {
+            sueldo = Double.parseDouble(txtSueldo.getText());
+            cant = Integer.parseInt(spnHw.getValue().toString());
+            dni = Integer.parseInt(txtDni.getText());
+        }catch(Exception x)
+        {
+            JOptionPane.showMessageDialog(null,"INGRESE SOLO NUMEROS EN LOS CAMPOS REQUERIDOS",
+                    "ERORR",JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if (!txtCodigo.getText().isBlank()&&!txtNombre.getText().isBlank()
+            && !txtDni.getText().isBlank()&&!txtSueldo.getText().isBlank())
+            {
+                String cod = txtCodigo.getText();
+                String nom = txtCodigo.getText();
+                Trabajador TecnicoHw = new TecnicoHardware(cod,nom,dni,sueldo
+                ,cant);
+                
+            }
+        else 
+        {
+            JOptionPane.showMessageDialog(null,"LLENE TODOS LOS CAMPOS","ERROR DE DATOS"
+            ,JOptionPane.WARNING_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_btnRegistrarHwActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLimpiar;
